@@ -23,6 +23,7 @@ textarea {
     max-width: 280px;
 }
 
+/* KY Header */
 .ky {
     font-family: 'Cinzel', serif;
     text-shadow: 4px 4px 4px #aaa;
@@ -51,4 +52,14 @@ textarea {
 /*Sortable Header*/
 th {
     cursor: pointer;
+}
+
+
+/* gif */
+.gif {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding-top: 2em;
 }

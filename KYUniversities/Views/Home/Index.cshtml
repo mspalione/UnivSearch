@@ -46,49 +46,53 @@
     </script>
 </head>
 <body style='background: powderblue'>
-    <div class="jumbotron">
+    <div class="jumbotron" style="background-image: url('../Content/bldg.png'); background-repeat: no-repeat; background-attachment: fixed; background-position: center;">
         <h1 class="ky text-center display-2">
-            KY Universities
+            Kentucky Universities
         </h1>
-        <img src="~/Content/kyHome.png" alt="Outline of Kentucky State Map with the word home." class="kyHome">
+        <img src="~/Content/kyHome.png" alt="Outline of Kentucky State Map with the word home." class="kyHome" style="opacity: 0.5">
     </div>
-        <hr />
+    <hr />
 
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Institution Name">
-
-        <div id="myTable" class="container">
-            <div class="row">
-
-                <div id="no-more-tables">
-                    <table class="col-md-12 table-bordered table-striped table-condensed cf">
-                        <thead class="cf">
-                            <tr>
-                                <th>
-                                    Institution Name
-                                </th>
-                                <th>
-                                    Head of Institution Name
-                                </th>
-                                <th>
-                                    Head of Institution Title
-                                </th>
-                                <th>
-                                    Institution Phone Number
-                                </th>
-                                <th>
-                                    Institution Website
-                                </th>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Institution Name">
 
 
+    <div id="myTable" class="container">
+        <div class="row">
 
-                            </tr>
+            <div id="no-more-tables">
+                <table class="col-md-12 table-bordered table-striped table-condensed cf">
+                    <thead class="cf">
+                        <tr>
+                            <th>
+                                Institution Name
+                            </th>
+                            <th>
+                                Head of Institution Name
+                            </th>
+                            <th>
+                                Head of Institution Title
+                            </th>
+                            <th>
+                                Institution Phone Number
+                            </th>
+                            <th>
+                                Institution Website
+                            </th>
 
-                        </thead>
-                        <tbody id="tData"></tbody>
-                    </table>
-                </div>
+
+
+                        </tr>
+
+                    </thead>
+                    <tbody id="tData"></tbody>
+                </table>
             </div>
         </div>
+    </div>
+    <div class="gif">
+        <iframe src="https://giphy.com/embed/QMA7KlOfLC5RS" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    </div>
 </body>
 </html>
 

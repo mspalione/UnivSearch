@@ -23,6 +23,11 @@ textarea {
     max-width: 280px;
 }
 
+.ky {
+    font-family: 'Cinzel', serif;
+    text-shadow: 4px 4px 4px #aaa;
+}
+
 /*Header Image*/
 .kyHome {
     display: block;

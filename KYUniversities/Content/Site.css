@@ -54,6 +54,10 @@ th {
     cursor: pointer;
 }
 
+    th:hover {
+        opacity: 0.5;
+    }
+
 
 /* gif */
 .gif {

@@ -45,47 +45,50 @@
         }
     </script>
 </head>
-<body>
-    <h2 class="text-center">
-        KY Universities
-    </h2>
-    <hr />
+<body style='background: powderblue'>
+    <div class="jumbotron">
+        <h1 class="text-center display-2">
+            KY Universities
+        </h1>
+        <img src="~/Content/kyHome.png" alt="Outline of Kentucky State Map with the word home." class="kyHome">
+    </div>
+        <hr />
 
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Institution Name">
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Institution Name">
 
-    <div id="myTable" class="container">
-        <div class="row">
+        <div id="myTable" class="container">
+            <div class="row">
 
-            <div id="no-more-tables">
-                <table class="col-md-12 table-bordered table-striped table-condensed cf">
-                    <thead class="cf">
-                        <tr>
-                            <th>
-                                Institution Name
-                            </th>
-                            <th>
-                                Head of Institution Name
-                            </th>
-                            <th>
-                                Head of Institution Title
-                            </th>
-                            <th>
-                                Institution Phone Number
-                            </th>
-                            <th>
-                                Institution Website
-                            </th>
+                <div id="no-more-tables">
+                    <table class="col-md-12 table-bordered table-striped table-condensed cf">
+                        <thead class="cf">
+                            <tr>
+                                <th>
+                                    Institution Name
+                                </th>
+                                <th>
+                                    Head of Institution Name
+                                </th>
+                                <th>
+                                    Head of Institution Title
+                                </th>
+                                <th>
+                                    Institution Phone Number
+                                </th>
+                                <th>
+                                    Institution Website
+                                </th>
 
 
 
-                        </tr>
+                            </tr>
 
-                    </thead>
-                    <tbody id="tData"></tbody>
-                </table>
+                        </thead>
+                        <tbody id="tData"></tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
 </body>
 </html>
 

@@ -23,6 +23,8 @@ textarea {
     max-width: 280px;
 }
 
+
+/*Search Bar*/
 #myInput {
     background-image: url('https://img.icons8.com/small/16/000000/search.png'); /* Add a search icon to input */
     background-position: 10px 12px; /* Position the search icon */
@@ -32,4 +34,9 @@ textarea {
     padding: 12px 20px 12px 40px; /* Add some padding */
     border: 1px solid #ddd; /* Add a grey border */
     margin-bottom: 12px; /* Add some space below the input */
+}
+
+/*Sortable Header*/
+th {
+    cursor: pointer;
 }

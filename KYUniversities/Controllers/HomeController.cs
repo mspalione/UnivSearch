@@ -39,12 +39,10 @@ namespace KYUniversities.Controllers
 
             return Json(lstUniversity, JsonRequestBehavior.AllowGet);
 
-
-
         }
 
         public ActionResult Index()
-        {
+        { 
             return View();
         }
     }

@@ -4,12 +4,12 @@
 <html>
 <head>
     <title>
-
         KY Universities
     </title>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/Css/BootstrapTableCss.css" rel="stylesheet" />
+    <script src="~/Scripts/sorttable.js"></script>
     <script type="text/javascript">
         GetCSVData();
         function GetCSVData() {
@@ -37,7 +37,7 @@
                             " <td data-title='Institution Website'>" +
                             data[iCount].WebAdd +
                             "</td>" +
-                            " </tr>")
+                            "</tr>")
                     }
                 }
 
@@ -85,3 +85,4 @@
     </div>
 </body>
 </html>
+

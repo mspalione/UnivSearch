@@ -9,42 +9,9 @@
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/Css/BootstrapTableCss.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
-    <script type="text/javascript">
-        GetCSVData();
-        function GetCSVData() {
-            $.ajax({
-                url: '/Home/GetCSVData/',
-                dataType: "json",
-                type: "GET",
-                contentType: 'application/json; charset=utf-8',
-
-                success: function (data) {
-                    for (var iCount = 0; iCount < data.length; iCount++) {
-                        $("#tData").append("<tr>" +
-                            " <td data-title='Institution Name'>" +
-                            data[iCount].InstName +
-                            "</td>" +
-                            " <td data-title='Head of Institution Name'>" +
-                            data[iCount].ChfName +
-                            "</td>" +
-                            " <td data-title='Head of Institution Title'>" +
-                            data[iCount].ChfTitle +
-                            "</td>" +
-                            " <td data-title='Institution Phone Number'>" +
-                            data[iCount].PhNum +
-                            "</td>" +
-                            " <td data-title='Institution Website'>" +
-                            data[iCount].WebAdd +
-                            "</td>" +
-                            "</tr>")
-                    }
-                }
-
-            });
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">   
 </head>
+
 <body style='background: powderblue'>
     <div class="jumbotron" style="background-image: url('../Content/bldg.png'); background-repeat: no-repeat; background-attachment: fixed; background-position: center;">
         <h1 class="ky text-center display-2">
@@ -56,10 +23,8 @@
 
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Institution Name">
 
-
     <div id="myTable" class="container">
         <div class="row">
-
             <div id="no-more-tables">
                 <table class="col-md-12 table-bordered table-striped table-condensed cf">
                     <thead class="cf">
@@ -79,11 +44,7 @@
                             <th>
                                 Institution Website
                             </th>
-
-
-
                         </tr>
-
                     </thead>
                     <tbody id="tData"></tbody>
                 </table>
@@ -96,7 +57,40 @@
 </body>
 </html>
 
-<script>
+<script type="text/javascript">
+    GetCSVData();
+    function GetCSVData() {
+        $.ajax({
+            url: '/Home/GetCSVData/',
+            dataType: "json",
+            type: "GET",
+            contentType: 'application/json; charset=utf-8',
+
+            success: function (data) {
+                for (var iCount = 0; iCount < data.length; iCount++) {
+                    $("#tData").append("<tr>" +
+                        " <td data-title='Institution Name'>" +
+                        data[iCount].InstName +
+                        "</td>" +
+                        " <td data-title='Head of Institution Name'>" +
+                        data[iCount].ChfName +
+                        "</td>" +
+                        " <td data-title='Head of Institution Title'>" +
+                        data[iCount].ChfTitle +
+                        "</td>" +
+                        " <td data-title='Institution Phone Number'>" +
+                        data[iCount].PhNum +
+                        "</td>" +
+                        " <td data-title='Institution Website'>" +
+                        data[iCount].WebAdd +
+                        "</td>" +
+                        "</tr>")
+                }
+            }
+        });
+    }
+
+    // Reorder Table 
     window.onload = function () {
         const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
 
@@ -104,7 +98,6 @@
             v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
         )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
 
-        // do the work...
         document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
             const table = th.closest('table');
             const tbody = table.querySelector('tbody');
@@ -116,24 +109,23 @@
 
     function myFunction() {
         // Declare variables
-        var input, filter, table, tr, td, i, txtValue;
+        var input, filter, table, tr, i, j, txtValue;
         input = document.getElementById("myInput");
         filter = input.value.toUpperCase();
         table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
+        tr = table.querySelectorAll("tbody tr");
 
         // Loop through all table rows, and hide those who don't match the search query
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
+            var td = tr[i].getElementsByTagName("td");
+            var found = false;
+            for (j = 0; j < td.length && !found; j++) {
+                if (td[j].textContent.toUpperCase().indexOf(filter) > -1) {
+                    found = true;
+                    break;
                 }
             }
+            tr[i].style.display = found ? "" : "none";
         }
     }
-
 </script>

@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<html>
+<head>
+    <title>
+
+        KY Universities
+    </title>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Css/BootstrapTableCss.css" rel="stylesheet" />
+    <script type="text/javascript">
+        GetCSVData();
+        function GetCSVData() {
+            $.ajax({
+                url: '/Home/GetCSVData/',
+                dataType: "json",
+                type: "GET",
+                contentType: 'application/json; charset=utf-8',
+
+                success: function (data) {
+                    for (var iCount = 0; iCount < data.length; iCount++) {
+                        $("#tData").append("<tr>" +
+                            " <td data-title='Institution Name'>" +
+                            data[iCount].InstName +
+                            "</td>" +
+                            " <td data-title='Head of Institution Name'>" +
+                            data[iCount].ChfName +
+                            "</td>" +
+                            " <td data-title='Head of Institution Title'>" +
+                            data[iCount].ChfTitle +
+                            "</td>" +
+                            " <td data-title='Institution Phone Number'>" +
+                            data[iCount].PhNum +
+                            "</td>" +
+                            " <td data-title='Institution Website'>" +
+                            data[iCount].WebAdd +
+                            "</td>" +
+                            " </tr>")
+                    }
+                }
+
+            });
+        }
+    </script>
+</head>
+<body>
+    <h2>
+        KY Universities
+    </h2>
+    <hr />
+    <div class="container">
+        <div class="row">
+
+            <div id="no-more-tables">
+                <table class="col-md-12 table-bordered table-striped table-condensed cf">
+                    <thead class="cf">
+                        <tr>
+                            <th>
+                                Institution Name
+                            </th>
+                            <th>
+                                Head of Institution Name
+                            </th>
+                            <th>
+                                Head of Institution Title
+                            </th>
+                            <th>
+                                Institution Phone Number
+                            </th>
+                            <th>
+                                Institution Website
+                            </th>
+
+
+
+                        </tr>
+
+                    </thead>
+                    <tbody id="tData"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

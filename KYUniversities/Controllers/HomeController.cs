@@ -11,7 +11,7 @@ namespace KYUniversities.Controllers
     {
         
 
-        public JsonResult GetCSVData()
+        public List<University> GetCSVData()
         {
             string path = Server.MapPath("~/Content/Univ.csv");
             string csvData = System.IO.File.ReadAllText(path);
@@ -37,12 +37,14 @@ namespace KYUniversities.Controllers
                 }
             }
 
-            return Json(lstUniversity, JsonRequestBehavior.AllowGet);
+            //return Json(lstUniversity, JsonRequestBehavior.AllowGet);
+            return lstUniversity;
 
         }
 
         public ActionResult Index()
-        { 
+        {
+            this.ViewData["universities"] = GetCSVData();
             return View();
         }
 

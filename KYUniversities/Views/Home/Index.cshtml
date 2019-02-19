@@ -1,4 +1,5 @@
-﻿@{
+﻿@using KYUniversities.Models;
+@{
     ViewBag.Title = "Index";
 }
 <html>
@@ -23,7 +24,23 @@
 
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Institution Name">
 
-    <div id="myTable" class="container">
+    <h3>Did we miss a school? Add it here!</h3>
+    <form>
+        Institution Name:<br>
+        <input type="text" name="institutionname"><br>
+        Head of Institution Name:<br>
+        <input type="text" name="headname"><br>
+        Head of Institution Title:<br>
+        <input type="text" name="headtitle"><br>
+        Institution Phone Number:<br>
+        <input type="text" name="phone"><br>
+        Institution Website:<br>
+        <input type="text" name="website"><br>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="myTable" class="container" style="padding-top: 2em;">
         <div class="row">
             <div id="no-more-tables">
                 <table class="col-md-12 table-bordered table-striped table-condensed cf">
@@ -32,6 +49,7 @@
                             <th>
                                 Institution Name
                             </th>
+
                             <th>
                                 Head of Institution Name
                             </th>
@@ -46,7 +64,21 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody id="tData"></tbody>
+                    <tbody id="tData">
+                        @{
+                            List<University> listUniv = (List<University>)ViewData["universities"];
+                            foreach (var univ in listUniv)
+                            {
+                                <tr>
+                                    <td>@univ.InstName</td>
+                                    <td>@univ.ChfName</td>
+                                    <td>@univ.ChfTitle</td>
+                                    <td>@univ.PhNum</td>
+                                    <td>@univ.WebAdd</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -58,37 +90,37 @@
 </html>
 
 <script type="text/javascript">
-    GetCSVData();
-    function GetCSVData() {
-        $.ajax({
-            url: '/Home/GetCSVData/',
-            dataType: "json",
-            type: "GET",
-            contentType: 'application/json; charset=utf-8',
+    //GetCSVData();
+    //function GetCSVData() {
+    //    $.ajax({
+    //        url: '/Home/GetCSVData/',
+    //        dataType: "json",
+    //        type: "GET",
+    //        contentType: 'application/json; charset=utf-8',
 
-            success: function (data) {
-                for (var iCount = 0; iCount < data.length; iCount++) {
-                    $("#tData").append("<tr>" +
-                        " <td data-title='Institution Name'>" +
-                        data[iCount].InstName +
-                        "</td>" +
-                        " <td data-title='Head of Institution Name'>" +
-                        data[iCount].ChfName +
-                        "</td>" +
-                        " <td data-title='Head of Institution Title'>" +
-                        data[iCount].ChfTitle +
-                        "</td>" +
-                        " <td data-title='Institution Phone Number'>" +
-                        data[iCount].PhNum +
-                        "</td>" +
-                        " <td data-title='Institution Website'>" +
-                        data[iCount].WebAdd +
-                        "</td>" +
-                        "</tr>")
-                }
-            }
-        });
-    }
+    //        success: function (data) {
+    //            for (var iCount = 0; iCount < data.length; iCount++) {
+    //                $("#tData").append("<tr>" +
+    //                    " <td data-title='Institution Name'>" +
+    //                    data[iCount].InstName +
+    //                    "</td>" +
+    //                    " <td data-title='Head of Institution Name'>" +
+    //                    data[iCount].ChfName +
+    //                    "</td>" +
+    //                    " <td data-title='Head of Institution Title'>" +
+    //                    data[iCount].ChfTitle +
+    //                    "</td>" +
+    //                    " <td data-title='Institution Phone Number'>" +
+    //                    data[iCount].PhNum +
+    //                    "</td>" +
+    //                    " <td data-title='Institution Website'>" +
+    //                    data[iCount].WebAdd +
+    //                    "</td>" +
+    //                    "</tr>")
+    //            }
+    //        }
+    //    });
+    //}
 
     // Reorder Table 
     window.onload = function () {

@@ -13,7 +13,7 @@ namespace KYUniversities.Controllers
 
         public List<University> GetCSVData()
         {
-            string path = Server.MapPath("~/Content/Univ.csv");
+            string path = Server.MapPath(@"~/Content/Univ.csv");
             string csvData = System.IO.File.ReadAllText(path);
             string state;
             List<University> lstUniversity = new List<University>();
@@ -52,8 +52,10 @@ namespace KYUniversities.Controllers
         [HttpPost]
         public ActionResult Index(FormModel vm)
         {
-            System.IO.File.ReadAllLines("~/Content/Univ.csv");
-            System.IO.File.AppendAllLines(@"~/Content/Univ.csv", );
+            var newItems = new List<string>();
+            newItems.Add($"{m.Institution},{field2}");
+
+            System.IO.File.AppendAllLines(@"~/Content/Univ.csv", newItems);
             return View();
         }
 

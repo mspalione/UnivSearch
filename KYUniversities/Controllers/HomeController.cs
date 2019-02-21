@@ -13,7 +13,7 @@ namespace KYUniversities.Controllers
 
         public List<University> GetCSVData()
         {
-            string path = Server.MapPath(@"~/Content/Univ.csv");
+            string path = Server.MapPath("~/Content/Univ.csv");
             string csvData = System.IO.File.ReadAllText(path);
             string state;
             List<University> lstUniversity = new List<University>();
@@ -25,14 +25,16 @@ namespace KYUniversities.Controllers
                 //Only get results for KY schools
                 if (state == "\"KY\"")
                 {
+                    var data = sCSVData[iCount].Split(',');
                     lstUniversity.Add(new University
                     {
-                //Get relevant data from csv file
-                        InstName = sCSVData[iCount].Split(',')[1],
-                        ChfName = sCSVData[iCount].Split(',')[8],
-                        ChfTitle = sCSVData[iCount].Split(',')[9],
-                        PhNum = sCSVData[iCount].Split(',')[10],
-                        WebAdd = sCSVData[iCount].Split(',')[15]
+                        
+                    //Get relevant data from csv file
+                        InstName = data[1],
+                        ChfName = data[8],
+                        ChfTitle = data[9],
+                        PhNum = data[10],
+                        WebAdd = data[15]
                     });
                 }
             }
@@ -53,9 +55,9 @@ namespace KYUniversities.Controllers
         public ActionResult Index(FormModel vm)
         {
             var newItems = new List<string>();
-            newItems.Add($"{m.Institution},{field2}");
+            newItems.Add($"{vm.Institution},,,,,,{vm.Headname}, {vm.Headtitle}, {vm.Phone},,,, {vm.Website}");
 
-            System.IO.File.AppendAllLines(@"~/Content/Univ.csv", newItems);
+            System.IO.File.AppendAllLines("~/Content/Univ.csv", newItems);
             return View();
         }
 

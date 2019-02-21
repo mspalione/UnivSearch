@@ -42,13 +42,21 @@ namespace KYUniversities.Controllers
 
         }
 
+        [HttpGet]
         public ActionResult Index()
         {
             this.ViewData["universities"] = GetCSVData();
             return View();
         }
 
-        
+        [HttpPost]
+        public ActionResult Index(FormModel vm)
+        {
+            System.IO.File.ReadAllLines("~/Content/Univ.csv");
+            System.IO.File.AppendAllLines(@"~/Content/Univ.csv", );
+            return View();
+        }
+
     }
 
 

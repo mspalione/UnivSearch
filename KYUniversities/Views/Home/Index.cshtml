@@ -1,4 +1,6 @@
 ﻿@using KYUniversities.Models;
+@model KYUniversities.Models.FormModel
+
 @{
     ViewBag.Title = "Index";
 }
@@ -10,7 +12,7 @@
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/Css/BootstrapTableCss.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">   
+    <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
 </head>
 
 <body style='background: powderblue'>
@@ -25,20 +27,23 @@
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Institution Name">
 
     <h3>Did we miss a school? Add it here!</h3>
-    <form>
-        Institution Name:<br>
-        <input type="text" name="institutionname"><br>
-        Head of Institution Name:<br>
-        <input type="text" name="headname"><br>
-        Head of Institution Title:<br>
-        <input type="text" name="headtitle"><br>
-        Institution Phone Number:<br>
-        <input type="text" name="phone"><br>
-        Institution Website:<br>
-        <input type="text" name="website"><br>
+
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+    <p>Institution Name:</p><br>
+        @Html.TextBoxFor(m => m.Institution)<br>
+     <p>Head of Institution Name:</p><br>
+        @Html.TextBoxFor(m => m.Headname)<br>
+      <p>Head of Institution Title:</p><br>
+        @Html.TextBoxFor(m => m.Headtitle)
+      <p>Institution Phone Number:</p><br>
+        @Html.TextBoxFor(m => m.Phone)
+      <p>Institution Website:</p><br>
+        @Html.TextBoxFor(m => m.Website)
         <br>
-        <input type="submit" value="Submit">
-    </form>
+        <input id="Submit" type="submit" value="submit" />
+}
+    
 
     <div id="myTable" class="container" style="padding-top: 2em;">
         <div class="row">
@@ -122,7 +127,7 @@
     //    });
     //}
 
-    // Reorder Table 
+    // Reorder Table
     window.onload = function () {
         const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
 

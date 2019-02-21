@@ -24,8 +24,10 @@
     </div>
     <hr />
 
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Institution Name">
+    @* Search bar *@
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search...">
 
+    @* Add a school form *@
     <h3>Did we miss a school? Add it here!</h3>
 
     @using (Html.BeginForm("Index", "Home", FormMethod.Post))
@@ -42,7 +44,7 @@
         @Html.TextBoxFor(m => m.Website)
         <br>
         <input id="Submit" type="submit" value="submit" />
-}
+    }
     
 
     <div id="myTable" class="container" style="padding-top: 2em;">

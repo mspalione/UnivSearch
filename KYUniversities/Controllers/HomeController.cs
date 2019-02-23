@@ -55,10 +55,13 @@ namespace KYUniversities.Controllers
         public ActionResult Index(FormModel vm)
         {
             var newItems = new List<string>();
-            var path = this.HttpContext.Current.Server.MapPath(“\\Content\\Univ.csv”);
+            var path = Server.MapPath("~/Content/Univ.csv");
+            this.ViewData["universities"] = GetCSVData();
+
             newItems.Add($"{vm.Institution},,,,,,{vm.Headname}, {vm.Headtitle}, {vm.Phone},,,, {vm.Website}");
 
             System.IO.File.AppendAllLines(path, newItems);
+            
             return View();
         }
 

@@ -10,6 +10,7 @@ namespace KYUniversities.Models
         public string Institution { get; set; }
         public string Headname { get; set; }
         public string Headtitle { get; set; }
+        public string State { get; set; }
         public string Phone { get; set; }
         public string Website { get; set; }
     }

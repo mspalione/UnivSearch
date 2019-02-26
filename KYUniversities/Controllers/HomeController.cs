@@ -61,6 +61,7 @@ namespace KYUniversities.Controllers
             newItems.Add($" ,{vm.Institution},,,{vm.State},,,,{vm.Headname}, {vm.Headtitle}, {vm.Phone},,,,, {vm.Website}");
 
             System.IO.File.AppendAllLines(path, newItems);
+            System.Threading.Thread.Sleep(1000);
             
             return View();
         }

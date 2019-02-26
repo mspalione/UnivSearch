@@ -23,7 +23,7 @@ namespace KYUniversities.Controllers
             {
                 state = sCSVData[iCount].Split(',')[4];
                 //Only get results for KY schools
-                if (state == "\"KY\"")
+                if ((state == "\"KY\"") || (state == "KY"))
                 {
                     var data = sCSVData[iCount].Split(',');
                     lstUniversity.Add(new University
@@ -34,7 +34,7 @@ namespace KYUniversities.Controllers
                         ChfName = data[8],
                         ChfTitle = data[9],
                         PhNum = data[10],
-                        WebAdd = data[15]
+                        WebAdd = data[1]
                     });
                 }
             }
@@ -58,14 +58,11 @@ namespace KYUniversities.Controllers
             var path = Server.MapPath("~/Content/Univ.csv");
             this.ViewData["universities"] = GetCSVData();
 
-            newItems.Add($"{vm.Institution},,,,,,{vm.Headname}, {vm.Headtitle}, {vm.Phone},,,, {vm.Website}");
+            newItems.Add($" ,{vm.Institution},,,{vm.State},,,,{vm.Headname}, {vm.Headtitle}, {vm.Phone},,,,, {vm.Website}");
 
             System.IO.File.AppendAllLines(path, newItems);
             
             return View();
         }
-
     }
-
-
 }

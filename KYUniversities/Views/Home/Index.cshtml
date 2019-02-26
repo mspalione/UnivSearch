@@ -30,22 +30,36 @@
     @* Add a school form *@
     <h3>Did we miss a school? Add it here!</h3>
 
-    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
-    {
-    <p>Institution Name:</p><br>
-        @Html.TextBoxFor(m => m.Institution)<br>
-     <p>Head of Institution Name:</p><br>
-        @Html.TextBoxFor(m => m.Headname)<br>
-      <p>Head of Institution Title:</p><br>
-        @Html.TextBoxFor(m => m.Headtitle)
-      <p>Institution Phone Number:</p><br>
-        @Html.TextBoxFor(m => m.Phone)
-      <p>Institution Website:</p><br>
-        @Html.TextBoxFor(m => m.Website)
-        <br>
-        <input id="Submit" type="submit" value="submit" />
-    }
-    
+    <div class="form">
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+        {
+            <p>
+                Institution Name:
+                @Html.TextBoxFor(m => m.Institution)
+            </p>
+            <p>
+                Head of Institution Name:
+                @Html.TextBoxFor(m => m.Headname)
+            </p>
+            <p>
+                Head of Institution Title:
+                @Html.TextBoxFor(m => m.Headtitle)
+            </p>
+            <p>
+                Institution State (KY):
+                @Html.TextBoxFor(m => m.State)
+            </p>
+            <p>
+                Institution Phone Number:
+                @Html.TextBoxFor(m => m.Phone)
+            </p>
+            <p>
+                Institution Website:
+                @Html.TextBoxFor(m => m.Website)
+            </p>
+            <input id="Submit" type="submit" value="Submit" />
+        }
+    </div>
 
     <div id="myTable" class="container" style="padding-top: 2em;">
         <div class="row">
@@ -56,7 +70,6 @@
                             <th>
                                 Institution Name
                             </th>
-
                             <th>
                                 Head of Institution Name
                             </th>
@@ -72,6 +85,7 @@
                         </tr>
                     </thead>
                     <tbody id="tData">
+                        @* Get data from csv file *@
                         @{
                             List<University> listUniv = (List<University>)ViewData["universities"];
                             foreach (var univ in listUniv)
@@ -97,37 +111,6 @@
 </html>
 
 <script type="text/javascript">
-    //GetCSVData();
-    //function GetCSVData() {
-    //    $.ajax({
-    //        url: '/Home/GetCSVData/',
-    //        dataType: "json",
-    //        type: "GET",
-    //        contentType: 'application/json; charset=utf-8',
-
-    //        success: function (data) {
-    //            for (var iCount = 0; iCount < data.length; iCount++) {
-    //                $("#tData").append("<tr>" +
-    //                    " <td data-title='Institution Name'>" +
-    //                    data[iCount].InstName +
-    //                    "</td>" +
-    //                    " <td data-title='Head of Institution Name'>" +
-    //                    data[iCount].ChfName +
-    //                    "</td>" +
-    //                    " <td data-title='Head of Institution Title'>" +
-    //                    data[iCount].ChfTitle +
-    //                    "</td>" +
-    //                    " <td data-title='Institution Phone Number'>" +
-    //                    data[iCount].PhNum +
-    //                    "</td>" +
-    //                    " <td data-title='Institution Website'>" +
-    //                    data[iCount].WebAdd +
-    //                    "</td>" +
-    //                    "</tr>")
-    //            }
-    //        }
-    //    });
-    //}
 
     // Reorder Table
     window.onload = function () {

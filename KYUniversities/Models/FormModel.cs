@@ -13,5 +13,8 @@ namespace KYUniversities.Models
         public string State { get; set; }
         public string Phone { get; set; }
         public string Website { get; set; }
+
+        // This property will hold KY as the available state for selection
+        public IEnumerable<SelectListItem> States { get; set; }
     }
 }

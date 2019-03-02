@@ -31,7 +31,7 @@ namespace KYUniversities.Controllers
                         ChfName = data[8],
                         ChfTitle = data[9],
                         PhNum = data[10],
-                        WebAdd = data[15]
+                        WebAdd = data[1]
                     });
                 }
             }
@@ -51,41 +51,14 @@ namespace KYUniversities.Controllers
         {
             var newItems = new List<string>();
             var path = Server.MapPath("~/Content/Univ.csv");
-            var states = GetAllStates();
-            var States = GetSelectListItems(states);
             this.ViewData["universities"] = GetCSVData();
 
             newItems.Add($" ,{vm.Institution},,,{vm.State},,,,{vm.Headname}, {vm.Headtitle}, {vm.Phone},,,,, {vm.Website}");
 
             System.IO.File.AppendAllLines(path, newItems);
-            //System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(1000);
 
             return View();
-        }
-
-        private IEnumerable<string> GetAllStates()
-        {
-            return new List<string>
-            {
-                "KY",
-            };
-        }
-
-        private IEnumerable<SelectListItem> GetSelectListItems(IEnumerable<string> elements)
-        {
-            // Create an empty list to hold result of the operation
-            var selectList = new List<SelectListItem>();
-
-            foreach (var element in elements)
-            {
-                selectList.Add(new SelectListItem
-                {
-                    Value = element,
-                    Text = element
-                });
-            }
-
-            return selectList;
-        }
+        }     
     }
 }

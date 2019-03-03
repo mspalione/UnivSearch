@@ -48,11 +48,6 @@ textarea {
     margin-bottom: 12px; /* Add some space below the input */
 }
 
-/* Form */
-.form {
-    border: solid white 2px;
-}
-
 /*Sortable Header*/
 th {
     cursor: pointer;

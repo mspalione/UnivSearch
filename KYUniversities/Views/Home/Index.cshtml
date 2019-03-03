@@ -26,11 +26,11 @@
 
     @* Search bar *@
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search...">
+    
+    @*<div class="form">*@
+        @* Add a school form *@
+        <h3>Did we miss a school? Add it here!</h3>
 
-    @* Add a school form *@
-    <h3>Did we miss a school? Add it here!</h3>
-
-    <div class="form">
         @using (Html.BeginForm("Index", "Home", FormMethod.Post))
         {
             <p>
@@ -46,8 +46,8 @@
                 @Html.TextBoxFor(m => m.Headtitle)
             </p>
             <p>
-                Institution State (KY):
-                @Html.TextBox("myTextBox", "KY")
+                Institution State:
+                @Html.DropDownList("myTextBox", new SelectList(new string[] { "KY" }))
             </p>
             <p>
                 Institution Phone Number:
@@ -58,8 +58,8 @@
                 @Html.TextBoxFor(m => m.Website)
             </p>
             <input id="Submit" type="submit" value="Submit" />
-            }
-    </div>
+        }
+    @*</div>*@
 
     <div id="myTable" class="container" style="padding-top: 2em;">
         <div class="row">

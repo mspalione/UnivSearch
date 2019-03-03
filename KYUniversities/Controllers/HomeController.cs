@@ -67,7 +67,12 @@ namespace KYUniversities.Controllers
 
             ModelState.Clear();
 
-            return View(vm);
+            var form = new FormModel
+            {
+                State = "KY"
+            };
+
+            return View(form);
         }     
     }
 }

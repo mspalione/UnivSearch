@@ -9,9 +9,11 @@ namespace KYUniversities.Controllers
 {
     public class HomeController : Controller
     {
+
+        public string path => Server.MapPath("~/Content/Univ.csv");
+
         public List<University> GetCSVData()
         {
-            string path = Server.MapPath("~/Content/Univ.csv");
             string csvData = System.IO.File.ReadAllText(path);
             string state;
             List<University> lstUniversity = new List<University>();
@@ -43,21 +45,29 @@ namespace KYUniversities.Controllers
         public ActionResult Index()
         {
             this.ViewData["universities"] = GetCSVData();
-            return View();
+
+            var form = new FormModel
+            {
+                State = "KY"
+            };
+
+            return View(form);
         }
 
         [HttpPost]
         public ActionResult Index(FormModel vm)
         {
             var newItems = new List<string>();
-            var path = Server.MapPath("~/Content/Univ.csv");            
+            //var path = Server.MapPath("~/Content/Univ.csv");            
 
             newItems.Add($" ,{vm.Institution},,,{vm.State},,,,{vm.Headname},{vm.Headtitle},{vm.Phone},,,,,{vm.Website}");
 
             System.IO.File.AppendAllLines(path, newItems);
             this.ViewData["universities"] = GetCSVData();
 
-            return View();
+            ModelState.Clear();
+
+            return View(vm);
         }     
     }
 }

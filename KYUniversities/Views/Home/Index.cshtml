@@ -47,7 +47,7 @@
             </p>
             <p>
                 Institution State:
-                @Html.DropDownList("myTextBox", new SelectList(new string[] { "KY" }))
+                @Html.TextBoxFor(m => m.State, new { @readonly = "readonly" })
             </p>
             <p>
                 Institution Phone Number:

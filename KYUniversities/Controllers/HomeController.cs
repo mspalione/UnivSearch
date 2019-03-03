@@ -31,7 +31,7 @@ namespace KYUniversities.Controllers
                         ChfName = data[8],
                         ChfTitle = data[9],
                         PhNum = data[10],
-                        WebAdd = data[1]
+                        WebAdd = data[15]
                     });
                 }
             }

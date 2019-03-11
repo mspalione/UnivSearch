@@ -1,6 +1,5 @@
 # UnivSearch
-A styled webpage from the data acquired that displays name, title, phone number and web address for all Kentucky records in a table that is both
-searchable and sortable from the data set provided on: https://inventory.data.gov/dataset/032e19b4-5a90-41dc-83ff-6e4cd234f565/resource/38625c3d-5388-4c16-a30f-d105432553a4.
+A styled webpage from the data acquired that displays name, title, phone number and web address for all Kentucky records in a table that is both searchable and sortable using JavaScript from the data set provided on: https://inventory.data.gov/dataset/032e19b4-5a90-41dc-83ff-6e4cd234f565/resource/38625c3d-5388-4c16-a30f-d105432553a4. Add a new school using C#. Search for a school with Javascript.
 
 I have never used SQL before and was advised by a mentor to not try to learn it for this project given the time restraints. 
 I think using a database would have made things simpler and smoother and look forward to learning SQL in the future.

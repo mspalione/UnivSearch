@@ -5,7 +5,7 @@ I have never used SQL before and was advised by a mentor to not try to learn it 
 I think using a database would have made things simpler and smoother and look forward to learning SQL in the future.
 
 I started by downloading the information from data.gov as a csv file. 
-I then created a MVS solution in Visual Studio. (This was my first exposure to MVS. Up until this point I have only made console apps.)
+I then created a MVC solution in Visual Studio. (This was my first exposure to MVC. Up until this point I have only made console apps.)
 I started with a University model setting each field for what would be needed to retrieve from the csv file.
 I added Univ.csv to the Content folder.
 I used HomeController to convert the csv file to Json, first searching for KY and then pulling the Name, Title, Phone Number and Website from relevant fields through array placement.

@@ -21,3 +21,5 @@ As a result, the remainder of the fields for that row are off by one making inco
 I believe this would not be a factor pulling json directly from site and storing in a database, which is what I would do to improve on the project.
 
 The functions of the site were tested and work in Chrome, Firefox and Edge.
+
+If you have difficulties getting this to run on your machine, after you clone the project try right clicking on the solution and select Clean Solution. Then right click on it again and select Rebuild Solution.
